@@ -1,26 +1,150 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-paper: #F6F4EE;
+  --bg-paper-tint: #ECEAE2;
+  --bg-pure: #FFFFFF;
+  --ink-black: #161514;
+  --ink-charcoal: #2D2C2A;
+  --ink-muted: #7A766F;
+  --ink-faint: #A8A49C;
+  --rule-line: #E2DFD6;
+  --accent-terracotta: #8F725A;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Base Body Styles */
+body {
+  background-color: var(--bg-paper);
+  color: var(--ink-black);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Reset default link styling to prevent browser default blue/underline */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background-color: #161514;
+  color: #F6F4EE;
+}
+
+/* Typography Classes */
+.font-serif {
+  font-family: var(--font-serif), 'Newsreader', Garamond, 'Times New Roman', serif;
+}
+
+.font-sans {
+  font-family: var(--font-sans), 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+/* Watershedd signature uppercase tracking */
+.watershedd-sub {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem; /* 11px */
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.watershedd-tag {
+  font-family: var(--font-sans);
+  font-size: 0.625rem; /* 10px */
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Hairline rule */
+.border-watershedd {
+  border-color: var(--rule-line);
+}
+
+/* Subtle architectural photography pan */
+@keyframes kenburns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.06);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-kenburns {
+  animation: kenburns 20s ease-in-out infinite alternate;
+}
+
+/* Editorial Article Body Typography */
+.editorial-prose {
+  color: #2D2C2A;
+  font-size: 1.1875rem;
+  line-height: 1.95;
+  font-weight: 300;
+}
+
+/* Magazine Drop Cap (Gambar 4 Print Editorial Style) */
+.editorial-prose > p:first-of-type::first-letter {
+  font-family: var(--font-serif);
+  font-size: 4rem;
+  line-height: 0.85;
+  float: left;
+  margin-right: 0.85rem;
+  margin-top: 0.25rem;
+  color: #161514;
+  font-weight: 400;
+}
+
+.editorial-prose p {
+  margin-bottom: 2rem;
+}
+
+.editorial-prose h2 {
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  font-weight: 400;
+  color: #161514;
+  margin-top: 3.5rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.editorial-prose h3 {
+  font-family: var(--font-serif);
+  font-size: 1.625rem;
+  font-weight: 400;
+  color: #161514;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.35;
+}
+
+.editorial-prose blockquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.625rem;
+  line-height: 1.5;
+  color: #161514;
+  border-left: 1.5px solid #161514;
+  padding-left: 2rem;
+  margin: 3rem 0;
+}
+
+.editorial-prose ul {
+  list-style-type: square;
+  padding-left: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.editorial-prose li {
+  margin-bottom: 0.625rem;
+}
+
+.editorial-prose strong {
+  font-weight: 500;
+  color: #161514;
 }
