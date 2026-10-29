@@ -17,6 +17,11 @@ export default function Header({ config }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [accountMenuOpen, setAccountMenuOpen] = useState(false);
 
+  // sembunyi header login
+  if (pathname === '/login' || pathname === '/register') {
+    return null;
+  }
+  
   return (
     <>
       {/* ATELIER Floating Top Navigation Bar */}

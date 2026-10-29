@@ -1,5 +1,8 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { EditorialConfig } from '@/types';
 
 interface FooterProps {
@@ -7,6 +10,13 @@ interface FooterProps {
 }
 
 export default function Footer({ config }: FooterProps) {
+  const pathname = usePathname();
+  
+  // sembunyikan footer login
+  if (pathname === '/login' || pathname === '/register') {
+    return null;
+  }
+  
   return (
     <footer className="bg-[#161514] text-[#F6F4EE] border-t border-[#262422] mt-32">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-16 py-20 md:py-28 space-y-16 md:space-y-24">
